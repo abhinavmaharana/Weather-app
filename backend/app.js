@@ -3,6 +3,11 @@ const app = express();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit')
 
+// Config
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require("dotenv").config({ path: "backend/config/config.env" });
+}
+
 // Rate limiting
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000, // 10 Mins
