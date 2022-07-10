@@ -8,6 +8,7 @@ import {
 
 function Header({ placeholder }) {
     const [searchInput, setSearchInput] = useState('');
+
     return (
         <header className='top-0 z-50  bg-white backdrop-filter backdrop-blur-sm bg-opacity-10 shadow-lg py-3 px-3 md:px-10 '>
             <div className='max-w-8xl mx-auto px-8 sm:px-16 grid grid-cols-2 items-center'>

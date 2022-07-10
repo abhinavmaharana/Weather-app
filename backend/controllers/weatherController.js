@@ -19,6 +19,12 @@ exports.getWeather =  catchAsyncErrors(async (req, res, next) => {
             .then((response) => response.json())
             .then((data) => res.status(200).json(data))
             .catch((err) => console.log(err));  
+
+        // Log the request to the public API
+        if (process.env.NODE_ENV !== 'production') {
+            console.log(`REQUEST: https://api.openweathermap.org/data/2.5/weather?${params}`)
+        }
+  
     } catch (error) {
         res.status(500).json({error})
     }

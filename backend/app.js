@@ -23,7 +23,7 @@ app.use(cors())
 //Route Impports
 const weather = require("./routes/weatherRoute");
 
-app.use("/api", weather);
+app.use("/api/weather", weather);
 
 module.exports = app;
 
