@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {
     DotsVerticalIcon,
     SearchIcon,
@@ -11,14 +11,20 @@ import { getTemperature } from '../../Helper/TemperatureUtil'
 import Error from '../Error';
 
 function Header({ placeholder, location }) {
+    const cityRef = useRef();
     const [searchInput, setSearchInput] = useState('');
-    const { city, isMetric } = useContext(WeatherContext);
+    const { city, isMetric, setCity } = useContext(WeatherContext);
     const [isLoading, weather, error ] = useFetchHook(
         `/api/weather?${getQuery(city,location)}`,
         location
     );
 
-    console.log(location)
+    const handleSubmit = e => {
+        e.preventDefault();
+        setCity(searchInput.current.value);
+        searchInput.current.value = null;
+    };
+
 
     if (error) {
         return (
@@ -28,7 +34,7 @@ function Header({ placeholder, location }) {
 
     const weatherTemp =  weather?.main.temp
 
-    console.log(weatherTemp);
+    // console.log(weatherTemp);
 
     return (
         <header className='top-0 z-50  bg-white backdrop-filter backdrop-blur-sm bg-opacity-10 shadow-lg py-3 px-3 md:px-10 '>
@@ -41,6 +47,8 @@ function Header({ placeholder, location }) {
                             <input
                                 value={searchInput}
                                 onChange={(e) => setSearchInput(e.target.value)}
+                                // inputRef={cityRef}
+                                // onKeyPress={handleSubmit}
                                 className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
                                 type="text"
                                 placeholder={placeholder || 'Search for location'}
