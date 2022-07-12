@@ -1,13 +1,34 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
     DotsVerticalIcon,
     SearchIcon,
     HomeIcon,
+} from '@heroicons/react/outline';
+import WeatherContext from '../../context/weatherContext'
+import { getQuery } from "../../Helper/QueryUtil"
+import { useFetchHook } from "../../Hooks/FetchHook"
+import { getTemperature } from '../../Helper/TemperatureUtil'
+import Error from '../Error';
 
-  } from '@heroicons/react/outline';
-
-function Header({ placeholder }) {
+function Header({ placeholder, location }) {
     const [searchInput, setSearchInput] = useState('');
+    const { city, isMetric } = useContext(WeatherContext);
+    const [isLoading, weather, error ] = useFetchHook(
+        `/api/weather?${getQuery(city,location)}`,
+        location
+    );
+
+    console.log(location)
+
+    if (error) {
+        return (
+            <Error errorMessage="Unable to get weather data. Please try again after sometime" />
+        );
+    }
+
+    const weatherTemp =  weather?.main.temp
+
+    console.log(weatherTemp);
 
     return (
         <header className='top-0 z-50  bg-white backdrop-filter backdrop-blur-sm bg-opacity-10 shadow-lg py-3 px-3 md:px-10 '>
@@ -28,8 +49,8 @@ function Header({ placeholder }) {
                         </div>
                         {/* Location */}
                         <div className='hidden md:inline-flex items-center justify-evenly'>
-                            <h1 className='flex items-center'><HomeIcon className="h-8 text-white p-2 cursor-pointer mx-2" /> Sector 137, Noida</h1>
-                            <p>27 ℃</p>
+                            <h1 className='flex items-center'><HomeIcon className="h-8 text-white p-2 cursor-pointer mx-2" /> {weather?.name}</h1>
+                            <p>{getTemperature(weatherTemp, isMetric)}</p>
                             <DotsVerticalIcon className="h-8 text-white p-2 cursor-pointer mx-2" />
                         </div>
                     </div>

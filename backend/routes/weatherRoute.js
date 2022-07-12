@@ -1,5 +1,5 @@
 const express = require("express");
-const { getWeather } = require("../controllers/weatherController");
+const { getWeather, getWeatherForcast } = require("../controllers/weatherController");
 const router = express.Router();
 const apicache = require('apicache')
 
@@ -8,5 +8,6 @@ let cache = apicache.middleware
 
 // Routes
 router.route("/", cache('5 minutes')).get(getWeather);
+router.route("/forcast", cache('5mins')).get(getWeatherForcast)
 
 module.exports = router;
