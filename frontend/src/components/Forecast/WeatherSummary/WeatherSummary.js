@@ -16,7 +16,7 @@ function WeatherSummary({location}) {
         <Error errorMessage="Unable to get weather data. Please try again after sometime" />
     );
   }
-  console.log(forecast)
+  // console.log(forecast)
 
   return (
     <div className='flex gap-x-2 mt-8 overflow-scroll scrollbar-hide'>

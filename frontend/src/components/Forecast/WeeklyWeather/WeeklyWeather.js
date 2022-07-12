@@ -16,8 +16,6 @@ function WeeklyWeather({location}) {
         <Error errorMessage="Unable to get weather data. Please try again after sometime" />
     );
   }
-
-  // console.log(forecast)
   return (
     <div className='flex gap-x-8 mt-8 overflow-scroll scrollbar-hide'>
       {/* {forecast && ( */}
@@ -31,8 +29,8 @@ function WeeklyWeather({location}) {
                   <img className='w-[100px] md:w-[140px]' src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`} alt='' />
                 </div>
                 <p className="text-2xl">{data?.weather[0].description}</p>
-                <p className='text-3xl font-bold'>{getTemperature(data?.main?.temp_max, isMetric)}</p>
-                <p className='text-2xl'>{getTemperature(data?.main?.temp_min)}</p>
+                <p className='text-3xl font-bold'>Max: {getTemperature(data?.main?.temp_max, isMetric)}</p>
+                <p className='text-2xl'>Min: {getTemperature(data?.main?.temp_min, isMetric)}</p>
               </div>
             ))
           }

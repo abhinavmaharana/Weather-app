@@ -18,7 +18,7 @@ function HourlyWeather({location}) {
   }
   // const icon = `https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`
 
-  console.log(forecast)
+  // console.log(forecast)
   return (
     <div className='flex gap-x-2 mt-8 overflow-scroll scrollbar-hide'>
         {forecast?.hourly?.map((data) => (

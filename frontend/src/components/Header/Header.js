@@ -13,16 +13,21 @@ import Error from '../Error';
 function Header({ placeholder, location }) {
     const cityRef = useRef();
     const [searchInput, setSearchInput] = useState('');
-    const { city, isMetric, setCity } = useContext(WeatherContext);
+    const { city, isMetric, setCity, setIsMetric } = useContext(WeatherContext);
     const [isLoading, weather, error ] = useFetchHook(
         `/api/weather?${getQuery(city,location)}`,
         location
     );
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        setCity(searchInput.current.value);
-        searchInput.current.value = null;
+    const onChange = (e) => {
+        const {value} = e.target;
+        setSearchInput(value)
+
+        // setCity(value)
+        console.log(value)
+        // e.preventDefault();
+        // setCity(searchInput.current.value);
+        // searchInput.current.value = null;
     };
 
 
@@ -46,10 +51,8 @@ function Header({ placeholder, location }) {
                         <div className='flex items-center bg-white backdrop-filter w-96 ml-6 md:ml-0 backdrop-blur-xl bg-opacity-10 rounded-full py-2 shadow-sm'>
                             <input
                                 value={searchInput}
-                                onChange={(e) => setSearchInput(e.target.value)}
-                                // inputRef={cityRef}
-                                // onKeyPress={handleSubmit}
-                                className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
+                                onChange={onChange}
+                                className="flex-grow pl-5 bg-transparent outline-none text-sm text-white placeholder-gray-400"
                                 type="text"
                                 placeholder={placeholder || 'Search for location'}
                             />
@@ -65,14 +68,9 @@ function Header({ placeholder, location }) {
                 </div>
                 {/* Celcius toggle */}
                 <div className="hidden md:inline-flex items-center justify-end space-x-1 text-white">
-                    <div className=' flex'>
-                        <div className='bg-white backdrop-filter backdrop-blur-xl bg-opacity-5 px-5 py-3 rounded-l-lg'>
-                            <h1>℉</h1>
-                        </div>   
-                        <div className='bg-white backdrop-filter backdrop-blur-xl bg-opacity-10 px-5 py-3 rounded-r-lg'>
-                            <h1>℃</h1>
-                        </div>
-                    </div> 
+                        <button onClick={() => setIsMetric(!isMetric)} className='bg-white backdrop-filter backdrop-blur-xl bg-opacity-5 px-5 py-3 rounded-lg'>
+                            {isMetric ? `Fahrenheit` : `Celsius`}
+                        </button>                    
                 </div>
             </div>
         </header>

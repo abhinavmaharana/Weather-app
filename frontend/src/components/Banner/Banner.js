@@ -26,6 +26,7 @@ function Banner({ location }) {
         );
     }
     const weatherFeel = weather?.current.feels_like
+    console.log(weather)
   return (
     <div className='px-8 py-8 sm:px-16'>
         {/* Location and updated time */}

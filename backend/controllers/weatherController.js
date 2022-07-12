@@ -13,16 +13,16 @@ exports.getWeather =  catchAsyncErrors(async (req, res, next) => {
             ...url.parse(req.url, true).query,
         })
         const apiRes = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?${params}`
+            `https://api.openweathermap.org/data/2.5/weather?${params}&units=imperial`
         )
             .then((response) => response.json())
             .then((data) => res.status(200).json(data))
             .catch((err) => console.log(err));  
 
         // Log the request to the public API
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`REQUEST: https://api.openweathermap.org/data/2.5/weather?${params}`)
-        }
+        // if (process.env.NODE_ENV !== 'production') {
+        //     console.log(`REQUEST: https://api.openweathermap.org/data/2.5/weather?${params}`)
+        // }
   
     } catch (error) {
         res.status(500).json({error})
@@ -37,15 +37,15 @@ exports.getWeatherForcast = catchAsyncErrors(async (req,res, next) => {
             ...url.parse(req.url, true).query,
         })
         const apiRes = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?${params}`
+            `https://api.openweathermap.org/data/2.5/forecast?${params}&units=imperial`
         )
             .then((response) => response.json())
             .then((data) => res.status(200).json(data))
             .catch((err) => console.log(err));
         // Log the request to the public API
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`REQUEST: https://api.openweathermap.org/data/2.5/forecast?${params}`)
-        }
+        // if (process.env.NODE_ENV !== 'production') {
+        //     console.log(`REQUEST: https://api.openweathermap.org/data/2.5/forecast?${params}`)
+        // }
     } catch (error) {
         res.status(500).json({error})
     }
@@ -58,15 +58,15 @@ exports.getWeatherForcastHourly = catchAsyncErrors(async (req,res, next) => {
             ...url.parse(req.url, true).query,
         })
         const apiRes = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast/hourly?${params}&${API_KEY_NAME}=${API_KEY_VALUE}`
+            `https://api.openweathermap.org/data/2.5/forecast/hourly?${params}&${API_KEY_NAME}=${API_KEY_VALUE}&units=imperial`
         )
             .then((response) => response.json())
             .then((data) => res.status(200).json(data))
             .catch((err) => console.log(err));
         // Log the request to the public API
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`REQUEST: https://api.openweathermap.org/data/2.5/forecast/hourly?${params}&${API_KEY_NAME}=${API_KEY_VALUE}`)
-        }
+        // if (process.env.NODE_ENV !== 'production') {
+        //     console.log(`REQUEST: https://api.openweathermap.org/data/2.5/forecast/hourly?${params}&${API_KEY_NAME}=${API_KEY_VALUE}`)
+        // }
     } catch (error) {
         res.status(500).json({error})
     }
@@ -80,15 +80,15 @@ exports.getCurrentWeather = catchAsyncErrors(async (req,res, next) => {
             ...url.parse(req.url, true).query,
         })
         const apiRes = await fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?${params}`
+            `https://api.openweathermap.org/data/2.5/onecall?${params}&units=imperial`
         )
             .then((response) => response.json())
             .then((data) => res.status(200).json(data))
             .catch((err) => console.log(err));
         // Log the request to the public API
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`REQUEST: https://api.openweathermap.org/data/2.5/onecall?${params}`)
-        }
+        // if (process.env.NODE_ENV !== 'production') {
+        //     console.log(`REQUEST: https://api.openweathermap.org/data/2.5/onecall?${params}`)
+        // }
     } catch (error) {
         res.status(500).json({error})
     }
@@ -102,15 +102,15 @@ exports.getCurrentAirPollution = catchAsyncErrors(async (req,res, next) => {
             ...url.parse(req.url, true).query,
         })
         const apiRes = await fetch(
-            `https://api.openweathermap.org/data/2.5/air_pollution?${params}`
+            `https://api.openweathermap.org/data/2.5/air_pollution?${params}&units=imperial`
         )
             .then((response) => response.json())
             .then((data) => res.status(200).json(data))
             .catch((err) => console.log(err));
         // Log the request to the public API
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`REQUEST: https://api.openweathermap.org/data/2.5/air_pollution?${params}`)
-        }
+        // if (process.env.NODE_ENV !== 'production') {
+        //     console.log(`REQUEST: https://api.openweathermap.org/data/2.5/air_pollution?${params}`)
+        // }
     } catch (error) {
         res.status(500).json({error})
     }
@@ -128,9 +128,9 @@ exports.getIcon = catchAsyncErrors(async (req,res,next) => {
             .catch((err) => console.log(err));
         
             // Log the request to the public API
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`REQUEST: https://openweathermap.org/img/wn/`)
-        }
+        // if (process.env.NODE_ENV !== 'production') {
+        //     console.log(`REQUEST: https://openweathermap.org/img/wn/`)
+        // }
     } catch (error) {
         res.status(500).json({error})
     }
