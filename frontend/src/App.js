@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from './components/Header/Header';
 import Banner from './components/Banner/Banner';
-import { HashRouter } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Forecast from './components/Forecast/Forecast';
 import WeatherContext from './context/weatherContext'
 

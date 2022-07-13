@@ -1,7 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import {
     DotsVerticalIcon,
-    SearchIcon,
     HomeIcon,
 } from '@heroicons/react/outline';
 import WeatherContext from '../../context/weatherContext'
@@ -9,27 +8,22 @@ import { getQuery } from "../../Helper/QueryUtil"
 import { useFetchHook } from "../../Hooks/FetchHook"
 import { getTemperature } from '../../Helper/TemperatureUtil'
 import Error from '../Error';
+import SearchBox from './SearchBox';
 
 function Header({ placeholder, location }) {
     const cityRef = useRef();
-    const [searchInput, setSearchInput] = useState('');
     const { city, isMetric, setCity, setIsMetric } = useContext(WeatherContext);
     const [isLoading, weather, error ] = useFetchHook(
         `/api/weather?${getQuery(city,location)}`,
         location
     );
+        const handleChange = (e) => {
+            e.preventDefault();
+            setCity(cityRef?.current.value);
+            cityRef.current.value = null;
 
-    const onChange = (e) => {
-        const {value} = e.target;
-        setSearchInput(value)
-
-        // setCity(value)
-        console.log(value)
-        // e.preventDefault();
-        // setCity(searchInput.current.value);
-        // searchInput.current.value = null;
-    };
-
+            console.log(cityRef.current.value)
+        }
 
     if (error) {
         return (
@@ -48,16 +42,7 @@ function Header({ placeholder, location }) {
                 <div className=''>
                     <div className="md:grid md:grid-cols-2 md:items-center md:border-r-2">
                         {/* Search bar */}
-                        <div className='flex items-center bg-white backdrop-filter w-96 ml-6 md:ml-0 backdrop-blur-xl bg-opacity-10 rounded-full py-2 shadow-sm'>
-                            <input
-                                value={searchInput}
-                                onChange={onChange}
-                                className="flex-grow pl-5 bg-transparent outline-none text-sm text-white placeholder-gray-400"
-                                type="text"
-                                placeholder={placeholder || 'Search for location'}
-                            />
-                            <SearchIcon className="h-8 text-gray-500 rounded-full p-2 cursor-pointer mx-2" />
-                        </div>
+                        <SearchBox location={location}/>
                         {/* Location */}
                         <div className='hidden md:inline-flex items-center justify-evenly'>
                             <h1 className='flex items-center'><HomeIcon className="h-8 text-white p-2 cursor-pointer mx-2" /> {weather?.name}</h1>
