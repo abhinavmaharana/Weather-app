@@ -12,13 +12,15 @@ function SearchBox({placeholder,location}) {
     setCity(cityRef.current.value);
     cityRef.current.value = null;
   };
+  console.log(cityRef)
   return (
-    <form onSubmit={handleSubmit} className='flex items-center bg-white backdrop-filter w-96 ml-6 md:ml-0 backdrop-blur-xl bg-opacity-10 rounded-full py-2 shadow-sm'>
+    <form onSubmit={handleSubmit} className='flex items-center bg-white backdrop-filter w-80 ml-6 md:ml-0 backdrop-blur-xl bg-opacity-10 rounded-full py-2 shadow-sm'>
       <input
         className="flex-grow pl-5 bg-transparent outline-none text-sm text-white placeholder-gray-400"
+        inputRef={cityRef}
         type="text"
         placeholder={placeholder || 'Search for location'}
-        inputRef={cityRef}
+        
       />
       <SearchIcon className="h-8 text-gray-500 rounded-full p-2 cursor-pointer mx-2" />
     </form>

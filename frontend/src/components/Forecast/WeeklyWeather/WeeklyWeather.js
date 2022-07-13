@@ -28,9 +28,11 @@ function WeeklyWeather({location}) {
                 <div>
                   <img className='w-[100px] md:w-[140px]' src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`} alt='' />
                 </div>
+                <div className="space-y-5">
                 <p className="text-2xl">{data?.weather[0].description}</p>
                 <p className='text-3xl font-bold'>Max: {getTemperature(data?.main?.temp_max, isMetric)}</p>
                 <p className='text-2xl'>Min: {getTemperature(data?.main?.temp_min, isMetric)}</p>
+                </div>
               </div>
             ))
           }

@@ -1,5 +1,5 @@
 import React from 'react'
-import SavedLocation from './SavedLocation/SavedLocation'
+// import SavedLocation from './SavedLocation/SavedLocation'
 import WeeklyWeather from './WeeklyWeather/WeeklyWeather'
 import HourlyWeather from './HourlyWeather/HourlyWeather'
 import WeatherSummary from './WeatherSummary/WeatherSummary'
@@ -18,8 +18,8 @@ function Forecast({ location }) {
         <div className='mt-8'>
             <HourlyWeather location={location} />
         </div>
-        <h1 className='uppercase text-3xl mt-12 font-bold'>Saved Locations</h1>
-        <SavedLocation />
+        {/* <h1 className='uppercase text-3xl mt-12 font-bold'>Saved Locations</h1>
+        <SavedLocation /> */}
     </div>
   )
 }

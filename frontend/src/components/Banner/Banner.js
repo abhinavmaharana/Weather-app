@@ -43,42 +43,42 @@ function Banner({ location }) {
                 <div className='grid grid-cols-2 gap-y-8 gap-x-8 md:grid-cols-3 md:gap-y-8 md:border-r-4'>
                     <div className='grid grid-cols-2 items-center'>
                         <FaTemperatureHigh className="text-5xl"/>
-                        <div className='md:-ml-20'>
+                        <div className='md:-ml-20 lg:-ml-10'>
                             <h1 className='text-2xl uppercase'>Feels like</h1>
                             <p className='text-xl'>{getTemperature(weatherFeel, isMetric)}</p>
                         </div>
                     </div>
                     <div className='grid grid-cols-2 items-center'>
                         <TbWind className="text-5xl"/>
-                        <div className='md:-ml-20'>
+                        <div className='md:-ml-20 lg:-ml-10'>
                             <h1 className='text-2xl uppercase'>Wind</h1>
                             <p className='text-xl'>{weather?.current.wind_speed} km/h</p>
                         </div>
                     </div>
                     <div className='grid grid-cols-2 items-center'>
                         <AiOutlineEye className="text-5xl"/>
-                        <div className='md:-ml-20'>
+                        <div className='md:-ml-20 lg:-ml-10'>
                             <h1 className='text-2xl uppercase'>Visibility</h1>
                             <p className='text-xl'>{weather?.current.visibility} km</p>
                         </div>
                     </div>
                     <div className='grid grid-cols-2 items-center'>
                         <WiHumidity className="text-5xl"/>
-                        <div className='md:-ml-20'>
+                        <div className='md:-ml-20 lg:-ml-10'>
                             <h1 className='text-2xl uppercase'>Humidity</h1>
                             <p className='text-xl'>{weather?.current.humidity}%</p>
                         </div>
                     </div>
                     <div className='grid grid-cols-2 items-center'>
                         <FaTemperatureHigh className="text-5xl"/>
-                        <div className='md:-ml-20'>
+                        <div className='md:-ml-20 lg:-ml-10'>
                             <h1 className='text-2xl uppercase'>Pressure</h1>
                             <p className='text-xl'>{weather?.current.pressure} mb</p>
                         </div>
                     </div>
                     <div className='grid grid-cols-2 items-center'>
                         <TiLeaf className="text-5xl"/>
-                        <div className='md:-ml-20'>
+                        <div className='md:-ml-20 lg:-ml-10'>
                             <h1 className='text-2xl uppercase'>Dew Point</h1>
                             <p className='text-xl'>{weather?.current.dew_point}°</p>
                         </div>

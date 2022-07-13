@@ -28,11 +28,11 @@ function AirPollution({location}) {
         />
         <div className='space-y-4 md:text-center lg:text-left'>
             <div className='space-y-2'>
-                <h1 className='text-3xl'>People Affected</h1>
-                <p className='text-2xl'>Sensitive Groups</p>
+                <h1 className='text-3xl lg:text-2xl font-bold'>People Affected</h1>
+                <p className='text-2xl lg:text-2xl'>Sensitive Groups</p>
             </div>
             <div className='space-y-2'>
-                <h1 className='text-3xl'>Outdoor Activities</h1>
+                <h1 className='text-3xl lg:text-2xl font-bold'>Outdoor Activities</h1>
                  <p className='text-2xl'>Limit outdoors</p>
             </div>
         </div>
